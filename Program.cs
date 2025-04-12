@@ -14,11 +14,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SeasonInfoContext>();
 
 builder.Services.AddDbContext<SeasonInfoContext>(dbContextOptions
-    => dbContextOptions.UseSqlServer(""));
+    => dbContextOptions.UseSqlServer(builder.Configuration.GetConnectionString("SeasonInfoDb")));
 
 builder.Services.AddScoped<ISeasonInfoRepository, SeasonInfoRepository>();
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

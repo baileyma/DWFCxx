@@ -38,7 +38,7 @@ namespace DWFCxx.Controllers
 
         [HttpGet("{matchId}", Name = "GetMatch")]
 
-        public async Task<ActionResult<IEnumerable<MatchDto>>> GetMatch(int seasonId, int matchId)
+        public async Task<ActionResult<MatchDto>> GetMatch(int seasonId, int matchId)
         {
             if (!await _seasonInfoRepository.SeasonExistsAsync(seasonId))
             {
@@ -46,14 +46,14 @@ namespace DWFCxx.Controllers
                 return NotFound();
             }
 
-            var match = _seasonInfoRepository.GetMatchAsync(seasonId, matchId);
+            var match = await _seasonInfoRepository.GetMatchAsync(seasonId, matchId);
             
             return Ok(_mapper.Map<MatchDto>(match));
 
         }
 
         [HttpPost]
-        public async ActionResult<MatchDto> PostMatch(int seasonId, MatchForCreationDto matchPost)
+        public async Task<ActionResult<MatchDto>> PostMatch(int seasonId, MatchForCreationDto matchPost)
         {
 
             if (!await _seasonInfoRepository.SeasonExistsAsync(seasonId))

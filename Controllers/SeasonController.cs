@@ -26,25 +26,14 @@ namespace DWFCxx.Controllers
             var seasonEntities = await _seasonInfoRepository.GetSeasonsAsync();
 
             var results = _mapper.Map<IEnumerable<SeasonWithoutMatchesDto>>(seasonEntities);
-            //var results = new List<SeasonWithoutMatchesDto>();
-
-            //foreach (var seasonEntity in seasonEntities)
-            //{
-            //    results.Add(new SeasonWithoutMatchesDto
-            //    {
-            //        Id = seasonEntity.Id,
-            //        WeatherSeason = seasonEntity.WeatherSeason,
-            //        Year = seasonEntity.Year
-            //    });
-            //}
-
+        
             return Ok(results);
 
         }
 
         [HttpGet("{id}")]
 
-        public async Task<IActionResult> GetSeason([FromRoute] int id, bool includeMatches = false)
+        public async Task<IActionResult> GetSeason([FromRoute] int id, bool includeMatches = true)
         {
             var season = await _seasonInfoRepository.GetSeasonAsync(id, includeMatches);
 
@@ -58,7 +47,7 @@ namespace DWFCxx.Controllers
                 return Ok(_mapper.Map<SeasonDto>(season));
             }
 
-            return Ok(season2);
+            return Ok(season);
             //return Ok(SeasonDataStore.NewSeasonSet.Seasons.FirstOrDefault(season => season.Id == id));
         }
     }

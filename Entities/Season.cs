@@ -16,11 +16,16 @@ namespace DWFCxx.Entities
 
         public int Year { get; set; }
 
-        public ICollection<MatchDto> Matches { get; set; } = new List<MatchDto>() { };
+        public ICollection<Match> Matches { get; set; } = new List<Match>() { };
 
-        public Season(string weatherSeason)
+
+        public Season() { }
+
+        public Season(int id, string weatherSeason, int year)
         {
+            Id = id;
             WeatherSeason = weatherSeason;
+            Year = year;
         }
     }
 }

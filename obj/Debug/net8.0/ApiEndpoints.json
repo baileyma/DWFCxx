@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "DWFCxx.Controllers.SeasonController",
-    "Method": "Index",
+    "Method": "GetSeasons",
     "RelativePath": "api/getSeasons",
     "HttpMethod": "GET",
     "IsController": true,
@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[DWFCxx.Models.SeasonDto, DWFCxx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DWFCxx.Models.SeasonWithoutMatchesDto, DWFCxx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -21,7 +21,7 @@
   },
   {
     "ContainingType": "DWFCxx.Controllers.SeasonController",
-    "Method": "GetCity",
+    "Method": "GetSeason",
     "RelativePath": "api/getSeasons/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -31,19 +31,14 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "includeMatches",
+        "Type": "System.Boolean",
+        "IsRequired": false
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "DWFCxx.Models.SeasonDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "DWFCxx.Controllers.MatchController",
@@ -123,7 +118,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[DWFCxx.Models.MatchDto, DWFCxx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "DWFCxx.Models.MatchDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -158,17 +153,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "DWFCxx.Models.MatchDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "DWFCxx.Controllers.MatchController",

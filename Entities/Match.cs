@@ -12,7 +12,7 @@ namespace DWFCxx.Entities
 
         // so between 1-12
 
-        [ForeignKey("CityId")]
+        [ForeignKey("SeasonId")]
 
         public Season? Season { get; set; }
 
@@ -26,5 +26,17 @@ namespace DWFCxx.Entities
         public int WhiteGoals { get; set; }
 
         public int BlueGoals { get; set; }
+
+        public Match() { }
+
+        public Match(int id, int seasonId, int round, DateTime date, int whiteGoals, int blueGoals)
+        {
+            Id = id;
+            SeasonId = seasonId;
+            Round = round;
+            Date = date;
+            WhiteGoals = whiteGoals;
+            BlueGoals = blueGoals;
+        }
     }
 }
